@@ -60,19 +60,41 @@ export class TeacherTableComponent implements OnInit {
     })
   }
 
+  // search(value) {
+  //   let foundItems = [];
+  //   if (value.length <= 0) {
+  //     this.getTeacherData();
+  //   } else {
+  //     let b = this.teacherData.filter((teacher) => {
+  //       if (teacher[0].name.toLowerCase().indexOf(value) > -1) {
+  //         foundItems.push(teacher)
+  //       }
+  //     });
+  //     this.teacherData = foundItems;
+  //   }
+  // }
+
   search(value) {
     let foundItems = [];
-    if (value.length <= 0) {
-      this.getTeacherData();
+    if (value.length == null) {
+      console.log('Please enter Name')
     } else {
       let b = this.teacherData.filter((teacher) => {
-        if (teacher[0].name.toLowerCase().indexOf(value) > -1) {
-          foundItems.push(teacher)
+        for(var index in b){
+          if (teacher[index].name.toLowerCase() == value.toLowerCase()) {
+            foundItems.push(teacher)
+            console.log('Teacher - ', teacher[index].name)
+            console.log('Teacher - ', teacher[index].age)
+          }
+        }
+        if(foundItems.length = 0){
+          console.log('Teacher not available')
         }
       });
       this.teacherData = foundItems;
     }
   }
+
 
   deleteTeacher(itemid) {
     const test = {
