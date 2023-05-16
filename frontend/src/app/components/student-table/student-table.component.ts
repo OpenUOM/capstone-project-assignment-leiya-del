@@ -86,4 +86,5 @@ search(value) {
     });
     this.studentData = foundItems;
   }
+ }
 }
